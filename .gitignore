@@ -1,0 +1,9 @@
+# Image drop zone — unoptimised source images, not part of the site
+image-inbox/
+
+# Internal reference material — never commit. This repo (teralis-web) is public;
+# reference/ mirrors QRtub's BRAND.md/GLOSSARY.md from the private qrtub/qrtub repo,
+# and reference/work-backlog.md contains real pricing figures kept out of site copy
+# on purpose. .mintignore keeps this off the deployed site, which is a different
+# thing from keeping it out of a public git history — this file does that part.
+reference/

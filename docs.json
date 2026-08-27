@@ -1,72 +1,118 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "Teralis",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#0369A1",
+    "light": "#0EA5E9",
+    "dark": "#075985"
   },
-  "favicon": "/favicon.svg",
+  "icons": {
+    "library": "lucide"
+  },
+  "favicon": "/favicon.png",
   "navigation": {
     "pages": [
       {
-        "group": "Getting Started",
+        "group": "Work",
         "pages": [
-          "index",
-          "quickstart"
+          "work",
+          "work/smc-marine",
+          "work/qrtub",
+          "work/ap-invoice-robot",
+          "work/safety-email"
         ]
       }
     ],
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Home",
+          "href": "https://teralis.io/",
+          "icon": "house"
         }
       ]
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/light.png",
+    "dark": "/logo/dark.png"
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "QRtub",
+        "href": "https://qrtub.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+      "label": "Get in touch",
+      "href": "mailto:hello@teralis.io"
     }
   },
-  "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
-    ]
-  },
+  "redirects": [
+    {
+      "source": "/safetyculture",
+      "destination": "/work"
+    },
+    {
+      "source": "/services",
+      "destination": "/work"
+    },
+    {
+      "source": "/case-studies",
+      "destination": "/work"
+    },
+    {
+      "source": "/case-studies/smc-marine",
+      "destination": "/work/smc-marine"
+    },
+    {
+      "source": "/case-studies/qrtub",
+      "destination": "/work/qrtub"
+    }
+  ],
   "footer": {
+    "links": [
+      {
+        "header": "Teralis",
+        "items": [
+          {
+            "label": "Work",
+            "href": "https://teralis.io/work"
+          },
+          {
+            "label": "Contact",
+            "href": "https://teralis.io/contact"
+          }
+        ]
+      },
+      {
+        "header": "Company",
+        "items": [
+          {
+            "label": "Privacy",
+            "href": "https://teralis.io/privacy"
+          },
+          {
+            "label": "hello@teralis.io",
+            "href": "mailto:hello@teralis.io"
+          }
+        ]
+      },
+      {
+        "header": "Also built",
+        "items": [
+          {
+            "label": "QRtub",
+            "href": "https://qrtub.com"
+          }
+        ]
+      }
+    ],
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "linkedin": "https://www.linkedin.com/company/teralis"
     }
   }
 }

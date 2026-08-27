@@ -5,3 +5,17 @@
 # Draft content
 drafts/
 *.draft.mdx
+
+# Image drop zone — unoptimised source images
+image-inbox/
+
+# Internal reference docs, not site pages
+reference/
+
+# Internal positioning/strategy doc — NOT a public page. Leaving this off
+# .mintignore once already meant it was live at /BRAND: Mintlify only hides
+# unnavigated .md/.mdx files from the sidebar, not from being served
+# directly by URL if requested. Being absent from docs.json's `navigation`
+# is not enough on its own to keep something private — verify with
+# `mint dev` + curl, don't assume.
+BRAND.md

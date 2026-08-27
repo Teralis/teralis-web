@@ -1,0 +1,48 @@
+---
+title: 'A data layer under SafetyCulture'
+sidebarTitle: 'SMC Marine'
+description: 'A multitenant sync of SafetyCulture into Postgres and Tableau, extended with live telemetry, GPS geofencing, and an AI-generated weekly summary.'
+icon: 'database'
+---
+
+**SMC Marine** · Mobile plant safety & asset management operations — civil equipment and marine · Ongoing since 2019
+
+<Frame>
+  <img src="/images/case-studies/smc-marine.webp" alt="" />
+</Frame>
+
+## The problem
+
+SMC Marine runs mobile plant safety and asset management as a single operation — spanning
+civil equipment alongside boats and barges. The systems available assumed a uniform
+operation, one kind of asset and one kind of site, and none of them fit an operation built
+around several at once.
+
+## The choice
+
+SafetyCulture was selected because it worked well in the field and had a well-documented open
+API — confidence it could be extended rather than merely used. At the time, its inspection
+scheduling and analytics were weak.
+
+## What was built
+
+1. A multitenant sync of SafetyCulture data into Postgres, connected to Tableau for dashboards
+   and to drive service scheduling from SafetyCulture actions.
+2. Once the data was in Postgres, the surface opened up: telemetry came in directly from
+   machines — Hitachi, Soilmec — alongside aftermarket Digital Matter GPS trackers, feeding GPS
+   locations geofenced into descriptions back into SafetyCulture.
+3. Hour meter readings and odometer estimates from the trackers feed SafetyCulture's sensor
+   module, so service intervals are live rather than estimated.
+4. An AI email service reads every comment, task and timeline item and summarises them into a
+   management email at 6am Monday.
+
+## The shape of it
+
+SafetyCulture is the field capture layer. Data comes out to be enriched and returns as
+something the system couldn't produce alone. The database is timeseries and GIS, and pulls in
+more than SafetyCulture — IoT GPS feeds, HR and finance systems included.
+
+It's headless, so it earns its keep the moment it's stood up — no portal, no logins, nothing
+new for a team to learn. Built for an operation the size of SMC Marine's, not an enterprise IT
+estate. Every client's mix of assets has turned out different enough that packaging this as one
+product never made sense — it stayed a service, shaped around each operation, on purpose.

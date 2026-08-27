@@ -1,0 +1,25 @@
+---
+title: 'A headless invoice robot for Acumatica'
+sidebarTitle: 'Invoice robot'
+description: 'Reads supplier invoices by email and posts them straight into Acumatica — no portal, no double handling.'
+icon: 'bot'
+---
+
+**Acumatica** · Accounts payable
+
+## The problem
+
+The AP software in place meant double handling: process the invoice in its own portal, then
+still finish the coding directly in Acumatica anyway, because it couldn't fully code every line
+item. Every invoice touched two systems instead of one.
+
+## What was built
+
+A headless robot that reads incoming invoices by email and posts them straight into Acumatica.
+No portal, no logins to manage — that second touch disappears entirely. High-volume suppliers
+with non-standard formats each get their own parser module, built with AI rather than
+hand-written.
+
+AI wrote the parsers; it doesn't run them. Once written, each parser is ordinary deterministic
+code — no AI cost per invoice processed, just the usual cost of running a tiny service. It runs
+on a single Fly.io machine, deliberately minimal, and handles real volume anyway.
