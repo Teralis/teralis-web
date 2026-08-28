@@ -116,12 +116,23 @@ rejected as the section name — too grand for the small end of the range.
 
 **Done as of 2026-08-28.** `services.mdx` and its two drafts are deleted (their content
 substantially retold what the SMC Marine case study already covered, or had no real example
-behind it — nothing worth carrying forward verbatim). `case-studies.mdx`/`case-studies/` are
-renamed to `work.mdx`/`work/`. `docs.json` navigation now has a single "Work" group; the old
-`/services`, `/case-studies`, and `/case-studies/*` URLs redirect to their `/work` equivalents.
-`work/` holds `smc-marine.mdx`, `qrtub.mdx`, plus new atomic entries pulled from
-`reference/work-backlog.md` as they're written up — `ap-invoice-robot.mdx` and
-`safety-email.mdx` are the first two.
+behind it — nothing worth carrying forward verbatim). `case-studies.mdx`/`case-studies/` were
+renamed to `work.mdx`/`work/`, holding `smc-marine.mdx`, `qrtub.mdx`, `ap-invoice-robot.mdx` and
+`safety-email.mdx`.
+
+**Parked as of 2026-08-29 — the Work section is not currently live.** Martin needed the site up
+within days without time to finish the content, so all of the above moved to `drafts/` and the
+homepage took over the job with a bulleted list of one-line descriptions of the kind of work
+Teralis does. Everything in this section still stands as the plan; it's a launch-timing
+decision, not a reversal. `drafts/README.md` covers promoting pages back, and CLAUDE.md's
+"Short-site launch" section covers what changed mechanically.
+
+**The one-liner list is the interim substitute, and it has its own rules.** Each bullet names a
+real problem in plain language and stops — no client names, no tech stack, no outcome
+metrics. They're written to show *range* (a two-day script sits beside a multi-year data
+platform), which is the same job the Work section does at greater length. When Work goes live,
+decide deliberately whether the list stays as a summary above it or is retired; keeping both
+unedited would repeat the same material twice on one page.
 
 **Pages stay short and atomic.** Martin's own instruction (2026-08-27): the site "gets too fat
 and complex otherwise." Prefer more small, single-purpose pages over fewer large ones that try

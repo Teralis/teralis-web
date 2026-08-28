@@ -1,7 +1,8 @@
 # Teralis Web
 
-Marketing site for Teralis Pty Ltd (`teralis.io`), replacing an existing Webflow site. ~6 static
-pages: services, case studies, contact, privacy. Nothing on the site is personalized or dynamic.
+Marketing site for Teralis Pty Ltd (`teralis.io`), replacing an existing Webflow site.
+Currently three static pages — home, contact, privacy — with more written and parked in
+`drafts/`. Nothing on the site is personalized or dynamic.
 
 Built on [Mintlify](https://mintlify.com). Pages are MDX with YAML frontmatter, configuration
 lives in `docs.json`, and Mintlify hosts and deploys it — changes to the default branch go to
@@ -13,14 +14,30 @@ positioning, voice, who the site is for, and what's deliberately left off it.
 
 ## Migration status
 
-The Astro site's content has been ported into Mintlify pages: `index.mdx`, `work.mdx` plus
-`work/`, `contact.mdx`, and `privacy.mdx`. `services.mdx` and `case-studies.mdx` no longer
-exist as separate concepts — see BRAND.md's "Site structure: Work, not Services" for why and
-when that changed (2026-08-28). `docs.json` carries Teralis navigation, colours, footer, and
-redirects from the old `/services`, `/case-studies`, and `/case-studies/*` URLs to their `/work`
-equivalents. Migration from the old Astro repo itself is complete; it's no longer mirrored
-anywhere in this repo — see "No local copy of the old site" below before assuming anything from
-it is still available on disk.
+**The live site is three pages: `index.mdx`, `contact.mdx`, `privacy.mdx`.** That's deliberate
+and recent (2026-08-29) — see "Short-site launch" immediately below. Everything else that was
+written lives in `drafts/`, excluded from the build.
+
+The Astro site's content has been ported into Mintlify pages. `services.mdx` and
+`case-studies.mdx` no longer exist as separate concepts — see BRAND.md's "Site structure: Work,
+not Services" for why and when that changed (2026-08-28). Migration from the old Astro repo
+itself is complete; it's no longer mirrored anywhere in this repo — see "No local copy of the
+old site" below before assuming anything from it is still available on disk.
+
+### Short-site launch (2026-08-29)
+
+Martin needed the site live within days but didn't have time to get all the content right. So
+the "Work" section — `work.mdx` and the four entries under `work/` — was moved wholesale into
+`drafts/`, and the homepage absorbed its job as a plain bulleted list of one-line descriptions
+of the kind of work Teralis does. That list is the substance of the site now; it's sourced from
+`reference/work-backlog.md` (gitignored, local only) and deliberately names no clients.
+
+This is a holding pattern, not a retreat. `drafts/README.md` documents exactly how to promote a
+page back. Nothing in `drafts/` is broken — it all built cleanly before being moved.
+
+`docs.json` redirects `/services`, `/case-studies`, `/case-studies/*`, `/safetyculture`, and now
+`/work` and `/work/*` to `/`. The `/work` ones matter because those URLs were briefly live on
+the staging domain in the 2026-08-28 push, so they may already be linked or crawled.
 
 Real Teralis brand assets are in: `favicon.png` and `logo/{light,dark}.png` (built from a
 256×256 master that was in `image-inbox/`, since deleted — see git history), and `images/` for
@@ -29,11 +46,11 @@ client logos, the QRtub wordmark, and case-study photography.
 - `images/clients/*.{svg,png}` — 10 real client logos (SMC Marine, AnewX, Lendlease, Silcar,
   Taronga, SeaO2, nbn co, ARENA, Transport for NSW, Junttan), shown as a small tiled grid on
   `index.mdx` (see "Client logo tiles," below `custom.css`'s section).
-- `images/qrtub-logo.svg` — real QRtub wordmark, used on `index.mdx`'s "Also built" card.
+- `images/qrtub-logo.svg` — real QRtub wordmark, on `index.mdx`'s "Also built" card.
 - `images/case-studies/smc-marine.webp` and `anewx-sr75-crew.webp` — real client photography,
-  wired into `work/smc-marine.mdx` and the AnewX telemetry card on `work.mdx`. (The folder is
-  still named `images/case-studies/` — cosmetic, not worth the churn of renaming to match
-  `work/`.)
+  wired into `drafts/work/smc-marine.mdx` and the AnewX card on `drafts/work.mdx`. Currently
+  unused by any live page, since those are drafts. (The folder name `images/case-studies/` is
+  a leftover — cosmetic, not worth the churn.)
 
 Still placeholder, still to do:
 
@@ -75,7 +92,7 @@ fictional "Project Ba\*d Co." hard-hat logo. The Astro repo's own `.claude/skill
 skill required flagging this explicitly rather than presenting it as authentic, since the site's
 positioning is against overclaiming — so it was deliberately left out rather than wired in
 silently, and wasn't copied over before `astro-ref/` was removed. This vignette has since gained
-its own dedicated page, `work/safety-email.mdx`, without the image (its Mitti/OpenAI mechanism
+its own dedicated page, `drafts/work/safety-email.mdx`, without the image (its Mitti/OpenAI mechanism
 was independently confirmed and written up — see `reference/work-backlog.md`). If a real
 screenshot or photo becomes available, it can still be added there.
 
@@ -162,10 +179,11 @@ exists. `.mintignore` excludes `drafts/` and `*.draft.mdx`, so:
 - Leave it out of the `navigation` array in `docs.json` while it is a draft.
 - Promote it by renaming to `<name>.mdx` and adding to `navigation` in the same change.
 
-Nothing is currently drafted this way. The two former service drafts
-(`services/custom-builds.draft.mdx`, `services/safetyculture-integration.draft.mdx`) were
-deleted outright during the 2026-08-28 Work restructuring, not promoted or left draft — see
-BRAND.md's "Site structure: Work, not Services."
+Currently in `drafts/`: `work.mdx` and `work/` (four entries), parked there on 2026-08-29 for
+the short-site launch — see "Short-site launch" above and `drafts/README.md` for how to promote
+them back. The two former service drafts (`services/custom-builds.draft.mdx`,
+`services/safetyculture-integration.draft.mdx`) were deleted outright during the 2026-08-28 Work
+restructuring, not promoted or parked — see BRAND.md's "Site structure: Work, not Services."
 
 Verified against `mint dev`: draft pages, and everything else `.mintignore` lists, return "Page
 Not Found", so `.mintignore` does keep ignored content out of the served site.
@@ -199,16 +217,21 @@ Run `mint dev` from the repo root (where `docs.json` lives); preview at `http://
 `mint update` refreshes the CLI when dev misbehaves. `mint broken-links` checks internal links
 before pushing.
 
-`docs.json` gotcha: `navbar.links[].href` and `navbar.primary.href` are validated as absolute
-URLs — a relative path like `/contact` fails the prebuild with `Must be a valid url` and every
-route 500s. Internal pages belong in `navigation`, not the navbar.
+**Keep the CLI current — a stale one invents problems.** On 4.2.213 two separate false alarms
+showed up that both vanished on 4.2.836: (1) spurious `"work/x" is referenced in the docs.json
+navigation but the file does not exist` warnings for files that plainly existed, and (2) a
+`Must be a valid url` prebuild failure on *relative* hrefs in `footer.links[].items[].href` and
+`navigation.global.anchors[].href`. Before debugging any strange `mint` behaviour, run
+`mint update` and retry — it costs a minute and it resolved both of these.
 
-Same trap applies to `footer.links[].items[].href` — but only once `footer.socials` is also set;
-relative hrefs there validated fine before `socials` existed, then failed on the identical values
-the moment it was added (`mint dev` re-verified, not assumed). So footer link items use the
-canonical domain (`https://teralis.io/...`) instead of relative paths, to be safe. If a
-`docs.json` field mysteriously starts rejecting values that used to pass, check what else in the
-file changed first — the validator doesn't always apply the same rule to the same field.
+`docs.json` href rules, re-verified on 4.2.836 (2026-08-29): **relative hrefs work** in
+`footer.links[].items[].href` and in anchors. Use them — `/contact`, not
+`https://teralis.io/contact`. This matters beyond tidiness: the site is deployed to
+`teralis.mintlify.app`, so absolute `teralis.io` links would bounce a visitor off staging and
+onto the old Webflow site mid-session. Every internal link in `docs.json` is relative for that
+reason. (`navbar.links[].href` and `navbar.primary.href` are a different case — those still want
+absolute URLs or a `mailto:`, and internal pages belong in `navigation` rather than the navbar
+anyway.)
 
 **Major gotcha, found 2026-08-28: inline `style={{...}}` on plain HTML/JSX elements in MDX is
 silently dropped from the server-rendered HTML.** Confirmed by direct inspection of `mint dev`'s
@@ -243,8 +266,23 @@ what "turn off the right nav" means literally), `custom` (Mintlify's own recomme
 mode — strips everything but the top navbar, including the left sidebar; a blank canvas), `frame`
 (like custom but keeps the sidebar), and `center` (removes both sidebar and TOC, centers content
 — good for changelogs). `index.mdx` uses `wide`. If the homepage needs a more dramatic departure
-from the doc-page look later, `custom` is the documented way to get it — but it also removes the
-left-hand site navigation, which `wide` does not.
+from the doc-page look later, `custom` is the documented way to get it — but note it strips the
+**footer** as well as the sidebar. On this site the footer is the only path to `/privacy`, so
+`custom` would orphan the privacy page; `wide` keeps both and is the safe choice here.
+
+**`description` frontmatter is not just SEO metadata — it renders visibly** as a subtitle
+directly under the H1 (confirmed by inspecting `mint dev` output, 2026-08-29). This had shipped
+a real duplication: `index.mdx` carried "For safer, smoother, leaner operations — Teralis works
+with…" as the description *and* repeated the same two sentences as the opening body text, so the
+page said the same thing twice, back to back, above the fold. Write `description` as the
+subtitle it actually is — a line that continues from the title rather than restating what the
+body is about to say. Same trap on any page: check `title` + `description` + first body line as
+a single sequence, because that's how a reader meets them.
+
+**Docs-style furniture worth turning off on a marketing page.** `hideFooterPagination: true` in
+frontmatter removes the prev/next page links at the bottom. All three live pages set it — on a
+three-page site the homepage was otherwise ending with my own "Tell us what's not working →" CTA
+immediately followed by Mintlify's "Contact us →" pagination link, which read as a stutter.
 
 ## Mintlify product knowledge
 

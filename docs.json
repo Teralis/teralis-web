@@ -13,26 +13,10 @@
   "favicon": "/favicon.png",
   "navigation": {
     "pages": [
-      {
-        "group": "Work",
-        "pages": [
-          "work",
-          "work/smc-marine",
-          "work/qrtub",
-          "work/ap-invoice-robot",
-          "work/safety-email"
-        ]
-      }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Home",
-          "href": "https://teralis.io/",
-          "icon": "house"
-        }
-      ]
-    }
+      "index",
+      "contact",
+      "privacy"
+    ]
   },
   "logo": {
     "light": "/logo/light.png",
@@ -54,23 +38,27 @@
   "redirects": [
     {
       "source": "/safetyculture",
-      "destination": "/work"
+      "destination": "/"
     },
     {
       "source": "/services",
-      "destination": "/work"
+      "destination": "/"
     },
     {
       "source": "/case-studies",
-      "destination": "/work"
+      "destination": "/"
     },
     {
-      "source": "/case-studies/smc-marine",
-      "destination": "/work/smc-marine"
+      "source": "/case-studies/:slug*",
+      "destination": "/"
     },
     {
-      "source": "/case-studies/qrtub",
-      "destination": "/work/qrtub"
+      "source": "/work",
+      "destination": "/"
+    },
+    {
+      "source": "/work/:slug*",
+      "destination": "/"
     }
   ],
   "footer": {
@@ -79,34 +67,16 @@
         "header": "Teralis",
         "items": [
           {
-            "label": "Work",
-            "href": "https://teralis.io/work"
+            "label": "Home",
+            "href": "/"
           },
           {
             "label": "Contact",
-            "href": "https://teralis.io/contact"
-          }
-        ]
-      },
-      {
-        "header": "Company",
-        "items": [
-          {
-            "label": "Privacy",
-            "href": "https://teralis.io/privacy"
+            "href": "/contact"
           },
           {
-            "label": "hello@teralis.io",
-            "href": "mailto:hello@teralis.io"
-          }
-        ]
-      },
-      {
-        "header": "Also built",
-        "items": [
-          {
-            "label": "QRtub",
-            "href": "https://qrtub.com"
+            "label": "Privacy",
+            "href": "/privacy"
           }
         ]
       }
