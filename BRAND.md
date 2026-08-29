@@ -155,9 +155,25 @@ collapsed under exactly this test.
   really that every company has a different tech stack and different resources, so adaptation is
   necessary. Renamed and broadened to "No two setups are the same."
 
+**A factual correction worth not repeating (2026-08-29).** The card used to end: *"when something
+genuinely needs full IT-project scope, we help hand it to a proper dev house."* That is wrong.
+Teralis has a **preferred partner it engages for full builds** — the work is brought in under
+Teralis, not handed away. The old line understated the capability and framed a strength as a
+limit. It has been removed rather than corrected, because the cards were running long and the
+partner relationship isn't something Martin has asked to advertise. If it ever goes back on the
+page, write it as reach, not as a hand-off.
+
 **The productive tension is intentional.** Card 1 says don't over-build; card 4 says do spend
 properly on the data layer underneath. Holding both is the judgment that reads as honest rather
 than as a pitch — don't "resolve" it by softening either.
+
+**Keep the cards short.** Martin, 2026-08-29: they were "a bit too wordy." They now run roughly
+27–44 words each; treat about 45 as the ceiling. A card states one idea and stops — detail
+belongs in a Work entry, not in a principle.
+
+**The Agile Manifesto quote sits directly under the "How we work" heading**, above the cards, as
+that section's epigraph. It was previously under the hero; Martin moved it (2026-08-29) because
+"maximizing the amount of work not done" introduces the principles rather than the pitch.
 
 **One boundary to keep watching.** Cards 2 and 3 both touch the client's existing stack — 2 says
 *we'll extend what you already run*, 3 says *we don't impose our own*. Logically distinct
