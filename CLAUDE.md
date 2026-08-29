@@ -46,7 +46,10 @@ client logos, the QRtub wordmark, and case-study photography.
 - `images/clients/*.{svg,png}` — 10 real client logos (SMC Marine, AnewX, Lendlease, Silcar,
   Taronga, SeaO2, nbn co, ARENA, Transport for NSW, Junttan), shown as a small tiled grid on
   `index.mdx` (see "Client logo tiles," below `custom.css`'s section).
-- `images/qrtub-logo.svg` — real QRtub wordmark, on `index.mdx`'s "Also built" card.
+- `images/qrtub-logo-{light,dark}.svg` — real QRtub wordmark, on `index.mdx`'s QRtub card.
+  The two differ only in wordmark colour (`#000000` vs `#e0e0e0`), both keeping the blue QR
+  mark. Mintlify sets a `dark` class on `<html>`, so `custom.css` swaps which one displays
+  rather than filtering a single file.
 - `images/case-studies/smc-marine.webp` and `anewx-sr75-crew.webp` — real client photography,
   wired into `drafts/work/smc-marine.mdx` and the AnewX card on `drafts/work.mdx`. Currently
   unused by any live page, since those are drafts. (The folder name `images/case-studies/` is

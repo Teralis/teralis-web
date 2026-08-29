@@ -22,8 +22,24 @@
   object-fit: contain;
 }
 
+/* QRtub wordmark: the two SVGs differ only in wordmark colour (#000 vs #e0e0e0),
+   both keeping the blue QR mark. Mintlify toggles dark mode with a `dark` class on
+   <html> (Tailwind class strategy), so swap which one is shown rather than trying to
+   filter a single file. */
 .qrtub-card-logo {
   margin-bottom: 0.5rem;
+}
+
+.qrtub-logo-dark {
+  display: none;
+}
+
+.dark .qrtub-logo-light {
+  display: none;
+}
+
+.dark .qrtub-logo-dark {
+  display: block;
 }
 
 .work-photo {
