@@ -63,6 +63,12 @@ Still placeholder, still to do:
   was no cost to switching. Cutover needs a redirect rule sending `www.teralis.io` →
   `teralis.io`, the reverse of Webflow's current setup; that's zone-level DNS config, not
   something `docs.json` can express.
+- **At cutover, re-check the canonical tag.** The staging deploy emits
+  `<link rel="canonical" href="https://teralis.mintlify.app">` — i.e. staging currently declares
+  *itself* the canonical site, and `robots.txt` there allows all crawlers and publishes a
+  sitemap. Confirm the canonical and `og:url` flip to `teralis.io` once the custom domain is
+  configured; if they don't, the `.mintify.app` URL can end up indexed as the real site. See
+  "Search engines and the staging domain" below.
 - No case-study image yet for `ai-summary-email` — see "AI-generated image" below.
 
 The old site's nav was Home / Case studies / Contact, with page titles rendered as
@@ -156,6 +162,30 @@ merged before deciding which ref is actually current.
 This check is session-opportunistic, not a guarantee — it only runs if a session happens to
 touch this repo after the mirror goes stale. There's no cron job keeping it fresh
 unconditionally; that was a deliberate choice over building one, not an oversight.
+
+## Search engines and the staging domain
+
+Verified against the live staging deploy, 2026-08-29:
+
+- `teralis.mintlify.app/robots.txt` allows all crawlers, publishes a sitemap, and carries
+  `Content-Signal: ai-train=yes, search=yes, ai-input=yes` — a Mintlify/Cloudflare default that
+  explicitly permits AI training on the content. Nobody chose that; flag it if Martin has a view.
+- `sitemap.xml` lists exactly the three live pages.
+- Every retired URL (`/work`, `/work/*`, `/services`, `/case-studies`, `/case-studies/*`,
+  `/safetyculture`) returns **308 permanent**. Note *permanent* — if `/work` is promoted back
+  out of `drafts/`, search engines will have cached "this URL is permanently gone" and take a
+  re-crawl to correct. Low risk today (those URLs were live for about a day), but real.
+- There is no `noindex`, and the canonical points at the staging domain itself.
+
+**Google Search Console is not a tracker** and doesn't conflict with the no-trackers rule below:
+it reads Google's own crawl data and adds nothing to the site — *provided* verification is done
+by DNS TXT record or an HTML meta tag. Do **not** verify via the Google Analytics or Google Tag
+Manager methods; those do inject a script and would breach the constraint.
+
+To add a verification meta tag or block indexing, `docs.json` supports `seo.metatags` (key-value
+pairs applied to every page) — e.g. `{"google-site-verification": "..."}` or
+`{"robots": "noindex"}`. Neither is set. If `noindex` is ever added to keep staging out of the
+index, **it must be removed at DNS cutover** or the real site stays invisible.
 
 ## Standing constraints
 
